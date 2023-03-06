@@ -1,0 +1,47 @@
+.containerPrincipal {
+    border: solid 2px red;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
+    background-color: white;
+    border: solid 2px blue;
+}
+
+.conatinerSecundario {
+    text-align: center;
+}
+
+.personAddIcon {
+    margin-left: 48%;
+    position: absolute;
+    top: 5%;
+}
+
+form .registro {
+    margin-left: 47%;
+    position: absolute;
+    top: 12%;
+}
+form .errorPassword{
+    color: red;
+    font-size:12px;
+    margin-top: -40px;
+}
+.formRegistro{
+    background-color: gainsboro;
+    height: 658px;
+}
+.MailOutlineIconRegister{
+    left: 84%;
+    position:fixed;
+    top: 22%;    
+}
+.VpnKeyIconRegister{
+    left: 84%;
+    position:fixed;
+    top: 51%;   
+}
+
+    

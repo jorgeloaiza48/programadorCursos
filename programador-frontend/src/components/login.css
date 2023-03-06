@@ -1,0 +1,46 @@
+.containerPrincipal{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);   
+    padding: 40px;
+    background-color: white;
+    width: 33%;
+}
+.conatinerSecundario{
+    text-align: center;    
+}
+.loginIcon {
+    margin-left: 48%;
+    position: absolute;
+    top: 5%;
+}
+form .inicioSesion {
+    margin-left: 44%;
+    position: absolute;
+    top: 12%;
+}
+form .errorPasswordLogin, .errorEmailLogin{
+    color: red;
+    font-size:12px;
+    margin-top: -40px;
+}
+.formLogin{
+    background-color: gainsboro;
+    height: 658px;
+}
+.regPass{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
+}
+.MailOutlineIconLogin{
+    left: 84%;
+    position:fixed;
+    top: 21%;    
+}
+.PasswordIconLogin{
+    left: 84%;
+    position:fixed;
+    top: 51%;   
+}
