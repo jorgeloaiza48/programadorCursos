@@ -73,6 +73,13 @@ export default function ResetPassword() {
                     })
                     navigate('/login') //lleva al formulario de login después de registrarse.  
                 }
+                else{
+                    Swal.fire({
+                        title: "El enlace ya no es válido",
+                        icon: "error"
+                    })
+                }
+                
             })
     }
 

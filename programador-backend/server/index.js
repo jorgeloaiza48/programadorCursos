@@ -141,7 +141,7 @@ app.post("/login",(req,res) =>{
     }
 })
 app.post("/forgot-password",controller.forgotPassword)
-//app.get('/reset-password/:id/:token', controller.resetPassword)
+app.get('/reset-password/:id/:token', controller.resetPassword)
 app.post('/reset-password/:id/:token', controller.CambioPassword)
 
 app.get("/usuarios-registrados", (req, res) => {

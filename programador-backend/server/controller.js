@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken')
 const nodemailer = require("nodemailer")
 const JWT_SECRTET = "some super secret..."
 let idGlobal = 0 //I had to set this global variable because when I am setting "app.get('/reset-password/:id/:token', controller.resetPassword)", I can´t render the view for changing password. And I also had problems with req.params. I couldn´t get them. why? I do not know.
+let token = ""
 
 const controller = {
 
@@ -20,14 +21,13 @@ const controller = {
         //Make sure email exists in dataBase
         let userFilter = user.filter(element => element.email === req.body.email)
         if (userFilter.length !== 0) {
-            idGlobal = userFilter[0].id
-            const secret = JWT_SECRTET
+            idGlobal = userFilter[0].id            
             const payload = {
-                email: userFilter[0].email,
+                //email: userFilter[0].email,
                 id: userFilter[0].id
             }
-            const token = jwt.sign(payload, secret, { expiresIn: '5m' })
-            //const link = `http://localhost:3000/reset-password/${userFilter[0].id}/${token}`           
+            token = jwt.sign(payload, JWT_SECRTET, { expiresIn: '5m' })
+            const link = `http://localhost:3000/reset-password/${userFilter[0].id}/${token}`
 
             // create reusable transporter object using the default SMTP transport
             const transporter = nodemailer.createTransport({
@@ -37,17 +37,17 @@ const controller = {
                 secure: true,
                 auth: {
                     user: "jelm48@misena.edu.co",
-                    pass: "George4810008968@#1"
+                    pass: "George4810008968@#3"
                 }
             })
             //Features of email to be sent
             const info = {
                 from: 'jelm48@misena.edu.co',
                 to: userFilter[0].email,
-                subject: "Recuperación de contraseña",
+                subject: "Recuperación de contraseña programador cursos",
                 text: "Correo de prueba para recuperar contraseña",
                 html: '<p>Recientemente solicitaste un reestablecimiento de contraseña para el programador de cursos.</p>' +
-                    `<p>Click <a href='http://localhost:3000/reset-password/${userFilter[0].id}/${token}'>aquí</a> para reestablecer contraseña.</p>`
+                    `<p>Click <a href=${link}>aquí</a> para reestablecer contraseña.</p>`
             }
             //sending email
             transporter.sendMail(info, function (error, info) {
@@ -64,27 +64,33 @@ const controller = {
 
     },
 
-    resetPassword: (req, res) => {
-        const { id, token } = req.params
-        idGlobal = id
-        console.log(req.params)
-        console.log(id)
+    resetPassword: (req, res, next) => {
+        // const { id, token } = req.params
+        // console.log(req.params)
+        // console.log("id :", id)
+        // console.log("token:", token)
         //res.send(req.params)
-        let usersFilePath = path.join(__dirname, './usuariosRegistrados.json');
-        User = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8')) //JSON a JS                  
-        User.find(element => {
-            if (element.id === id) {                
-                const secret = JWT_SECRTET
-                const payload = jwt.verify(token, secret)
-                res.send("id confirmado")
-            }
-        });
+        // let usersFilePath = path.join(__dirname, './usuariosRegistrados.json');
+        // User = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8')) //JSON a JS                  
+        // User.find(element => {
+        //     if (element.id === id) {
+        //         console.log("id encontrado")
+        //         const secret = JWT_SECRTET
+        //         const payload = jwt.verify(token, secret)
+        //     }
+        // });
 
-        // res.status(200).send('Se cambió la contraseña con éxito')
+        // res.status(200).send('id confirmado')
+        jwt.verify(token, JWT_SECRTET, (err) => {
+            if (err) {
+                console.log("token ya expiró ")               
+                return res.status(400).send('Enlace ya no es válido')
+            }
+        })
     },
 
-    CambioPassword: (req, res) => {      
-        //const { id, token } = req.params        
+    CambioPassword: (req, res) => {
+        //const { id, token } = req.params //         
         let usersFilePath = path.join(__dirname, './usuariosRegistrados.json');
         User = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8')) //JSON a JS                  
         User.find(element => {
@@ -95,6 +101,9 @@ const controller = {
                 res.status(200).send('Password has been changed successfully')
             }
         })
+
+
+
     }
 }
 module.exports = controller
