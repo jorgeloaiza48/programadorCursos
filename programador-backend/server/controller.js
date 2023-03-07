@@ -21,7 +21,7 @@ const controller = {
         //Make sure email exists in dataBase
         let userFilter = user.filter(element => element.email === req.body.email)
         if (userFilter.length !== 0) {
-            idGlobal = userFilter[0].id            
+            idGlobal = userFilter[0].id
             const payload = {
                 //email: userFilter[0].email,
                 id: userFilter[0].id
@@ -47,7 +47,8 @@ const controller = {
                 subject: "Recuperación de contraseña programador cursos",
                 text: "Correo de prueba para recuperar contraseña",
                 html: '<p>Recientemente solicitaste un reestablecimiento de contraseña para el programador de cursos.</p>' +
-                    `<p>Click <a href=${link}>aquí</a> para reestablecer contraseña.</p>`
+                    `<p>Click <a href=${link}>aquí</a> para reestablecer contraseña.</p>` +
+                    '<p>Este enlace expirará en 5 minutos.</p>'
             }
             //sending email
             transporter.sendMail(info, function (error, info) {
@@ -65,26 +66,13 @@ const controller = {
     },
 
     resetPassword: (req, res, next) => {
-        // const { id, token } = req.params
-        // console.log(req.params)
-        // console.log("id :", id)
-        // console.log("token:", token)
-        //res.send(req.params)
-        // let usersFilePath = path.join(__dirname, './usuariosRegistrados.json');
-        // User = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8')) //JSON a JS                  
-        // User.find(element => {
-        //     if (element.id === id) {
-        //         console.log("id encontrado")
-        //         const secret = JWT_SECRTET
-        //         const payload = jwt.verify(token, secret)
-        //     }
-        // });
-
-        // res.status(200).send('id confirmado')
+        // const { id, token } = req.params                      
         jwt.verify(token, JWT_SECRTET, (err) => {
             if (err) {
-                console.log("token ya expiró ")               
                 return res.status(400).send('Enlace ya no es válido')
+            }
+            else {
+                return res.status(200).send('Enlace aún es válido')
             }
         })
     },

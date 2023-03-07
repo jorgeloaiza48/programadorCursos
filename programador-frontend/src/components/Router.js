@@ -8,7 +8,7 @@ import Rejilla from './Rejilla'
 //import Formulario from './formulario/Formulario';
 import FormikContainer from './formulario/FormikContainer'
 import OlvidoPassword from './OlvidoPassword'
-import ResetPassword from './ResetPassword'
+import TokenExpired from './TokenExpired'
 
 export default function Router() {
     return (
@@ -17,7 +17,7 @@ export default function Router() {
                 <Route exact path='/'               element={<Registro />} />
                 <Route exact path='/registro'       element={<Registro />} />
                 <Route exact path='/olvidoPassword' element={<OlvidoPassword />} />
-                <Route exact path='/reset-password/:id/:token' element={<ResetPassword />} />
+                <Route exact path='/reset-password/:id/:token' element={<TokenExpired />} />
                 <Route exact path='/login'          element={<Login />} />
                 <Route exact path='/menu'           element={<Menu/>} />
                 <Route exact path='/rejilla'        element={<Rejilla/>} />

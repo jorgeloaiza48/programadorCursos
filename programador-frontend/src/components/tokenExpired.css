@@ -1,0 +1,17 @@
+.DivbotonesEnlaceNoValido .botonesEnlaceNoValido{          
+    display: flex;    
+    justify-content: space-evenly; 
+    margin-left: 25%;
+    margin-top: 50px;   
+    width:50%;
+}
+.DivbotonesEnlaceNoValido{     
+    display: flex;
+    flex-direction: column;    
+    padding: 50px;
+    text-align: center;
+}
+.DivbotonesEnlaceNoValido h1{    
+    margin-bottom: 50px;
+    margin-top: 200px;  
+}
