@@ -8,6 +8,7 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import Swal from 'sweetalert2'
+import CopyRight from './copyRight/CopyRight'
 
 
 
@@ -103,6 +104,7 @@ function Registro() {
                 </div>
             </div>
         </form>
+        <CopyRight></CopyRight>
         </div>
     )
 }

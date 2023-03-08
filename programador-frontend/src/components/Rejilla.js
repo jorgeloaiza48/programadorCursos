@@ -22,7 +22,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import HelpIcon from '@mui/icons-material/Help';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import QuizIcon from '@mui/icons-material/Quiz';
-import CopyrightIcon from '@mui/icons-material/Copyright';
+import CopyRight from './copyRight/CopyRight';
 
 
 
@@ -879,8 +879,8 @@ function Rejilla() {
         <div className='borrarProgramacion' onClick={deleteWholeProgramming}><DeleteForeverIcon sx={{ fontSize: 35 }}></DeleteForeverIcon><span className='borrarProgramacionTexto'><WarningAmberIcon></WarningAmberIcon><br></br>Borrar toda la programación del año.</span></div>
         <div className='HelpIcon'><HelpIcon sx={{ fontSize: 35 }}></HelpIcon><span className='HelpIconText'><QuizIcon></QuizIcon>Para crear o programar un curso haga click en la celda correspondiente a la fecha y hora de inicio.<br></br><br></br><QuizIcon></QuizIcon>Para borrar un curso específico haga click sobre el <strong>color</strong> del curso a borrar ubicado en la parte inferior, sobre las horas (ver imagen). Se le pedirá confirmación antes de borrar el curso.<br></br><img src="/colores-cursos.png" alt='logo' /></span></div>
         <div className='avatar'><Avatar sx={avatarStyle}><PersonIcon></PersonIcon></Avatar><span className='emailAvatar'>{cookies.get('email')}</span></div>
-      </div>
-      <footer><CopyrightIcon className='CopyrightIcon'></CopyrightIcon>  jelm48@misena.edu.co</footer>      
+      </div>    
+      <CopyRight></CopyRight>  
     </div>
 
   )

@@ -9,12 +9,13 @@ import Rejilla from './Rejilla'
 import FormikContainer from './formulario/FormikContainer'
 import OlvidoPassword from './OlvidoPassword'
 import TokenExpired from './TokenExpired'
+import Inicio from './inicio/Inicio'
 
 export default function Router() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route exact path='/'               element={<Registro />} />
+                <Route exact path='/'               element={<Inicio />} />
                 <Route exact path='/registro'       element={<Registro />} />
                 <Route exact path='/olvidoPassword' element={<OlvidoPassword />} />
                 <Route exact path='/reset-password/:id/:token' element={<TokenExpired />} />

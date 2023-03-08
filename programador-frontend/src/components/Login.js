@@ -10,6 +10,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import PasswordIcon from '@mui/icons-material/Password';
 import Swal from 'sweetalert2'
+import CopyRight from './copyRight/CopyRight'
 
 
 
@@ -131,6 +132,7 @@ export default function Login() {
                     </div>
                 </div>
             </form>
+            <CopyRight></CopyRight>
         </div>
     )
 }

@@ -6,6 +6,7 @@ import { useState } from 'react';
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom'
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import CopyRight from './copyRight/CopyRight';
 
 
 export default function OlvidoPassword() {
@@ -74,6 +75,7 @@ export default function OlvidoPassword() {
                     </div>
                 </div>
             </form>
+            <CopyRight></CopyRight>
         </div>
     )
 }

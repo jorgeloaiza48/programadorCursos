@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { Link } from "react-router-dom"
 import { useNavigate } from 'react-router-dom'
 import SyncLockIcon from '@mui/icons-material/SyncLock';
+import CopyRight from './copyRight/CopyRight';
 
 
 
@@ -105,6 +106,7 @@ export default function ResetPassword() {
                     </div>
                 </div>
             </form>
+            <CopyRight></CopyRight>
         </div>
     )
 }

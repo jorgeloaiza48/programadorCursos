@@ -6,6 +6,8 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import SyncIcon from '@mui/icons-material/Sync';
 import { Link } from "react-router-dom"
 import './tokenExpired.css'
+import CopyRight from './copyRight/CopyRight';
+import LinkOffIcon from '@mui/icons-material/LinkOff';
 
 
 export default function TokenExpired() {
@@ -28,12 +30,14 @@ export default function TokenExpired() {
   else {
     return (
       <div className='DivbotonesEnlaceNoValido'>
+        <LinkOffIcon className='LinkOffIcon' sx={{ fontSize: 120 }}></LinkOffIcon>
         <h1>¡El enlace ya no es válido!</h1>
         <div className='botonesEnlaceNoValido'>
           <Link to="/login"><button class="btn btn-primary">{<LoginIcon />} Iniciar sesión</button></Link>
           <Link to="/registro"><button class="btn btn-success" >{<PersonAddIcon />}Registrarse</button></Link>
           <Link to="/olvidoPassword"><button class="btn btn-warning" >{<SyncIcon />}Recuperar contraseña</button></Link>
         </div>
+        <CopyRight></CopyRight>
       </div>
     )
   }
