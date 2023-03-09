@@ -2,6 +2,8 @@
 //const cors = require('cors');
 // const app = express()
 // const bodyParser = require('body-parser');
+const {email} = require('./credentials')
+const {password} = require('./credentials')
 const fs = require('fs')
 const path = require("path");
 const jwt = require('jsonwebtoken')
@@ -36,8 +38,8 @@ const controller = {
                 port: 2525,  //25 o 587 o 465 o 2525
                 secure: true,
                 auth: {
-                    user: "jelm48@misena.edu.co",
-                    pass: "George4810008968@#3"
+                    user: email,
+                    pass: password
                 }
             })
             //Features of email to be sent
