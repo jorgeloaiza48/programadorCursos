@@ -35,40 +35,7 @@ app.use(
 //     res.send()
 //     //next(); 
 // })
-app.post('/create-user', function (req, res) {
-    let usersFilePath = path.join(__dirname, './usuariosRegistrados.json');
-    let users = fs.readFileSync(usersFilePath, 'utf-8')
-    let NewUser = []
-    NewUser = JSON.parse(users) //JSON a JS
-    let id = NewUser.length + 1
-
-    let nuevoUsuario = {
-        id: id,
-        email: req.body.email,
-        password: req.body.password,
-        coordenadasCurso: [],
-        colorDeRelleno: [],
-        coordColorHoras: [],
-        totalHorasPorMes: []
-    }
-    if (users.length === 0) {
-        NewUser.push(nuevoUsuario)
-    }
-    else {
-        let userFilter = NewUser.filter(element => element.email === req.body.email)
-        if (userFilter.length !== 0) {
-            res.status(400).send('No creado')
-            // res.send("Usuario NO creado")
-        }
-        else {
-            NewUser.push(nuevoUsuario)
-            fs.writeFileSync(usersFilePath, JSON.stringify(NewUser, null, "\t")) //de JS a JSON           
-            res.status(200).send("Usuario creado")
-            //res.send("Usuario creado")
-
-        }
-    }
-})
+app.post('/create-user', controller.createUser)
 
 app.post('/update-user', function (req, res) {
     let usersFilePath = path.join(__dirname, './usuariosRegistrados.json');
